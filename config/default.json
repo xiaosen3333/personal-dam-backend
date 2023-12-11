@@ -1,0 +1,19 @@
+{
+  "port": "env(PORT)",
+  "settings": {
+    "loggerFormat": "foal",
+    "session": {
+      "store": "@foal/typeorm"
+    },
+    "disk": {
+      "driver": "local",
+      "local": {
+        "directory": "public"
+      }
+    }
+  },
+  "database": {
+    "type": "sqlite",
+    "database": "./db.sqlite3"
+  }
+}
