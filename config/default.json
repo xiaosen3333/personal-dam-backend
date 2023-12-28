@@ -1,19 +1,24 @@
 {
-  "port": "env(PORT)",
-  "settings": {
-    "loggerFormat": "foal",
-    "session": {
-      "store": "@foal/typeorm"
-    },
-    "disk": {
-      "driver": "local",
-      "local": {
-        "directory": "public"
-      }
-    }
-  },
-  "database": {
-    "type": "sqlite",
-    "database": "./db.sqlite3"
-  }
+	"port": "env(PORT)",
+	"settings": {
+		"loggerFormat": "foal",
+		"session": {
+			"store": "@foal/typeorm"
+		},
+		"disk": {
+			"driver": "local",
+			"local": {
+				"directory": "public"
+			}
+		},
+		"cors": {
+			"origin": "http://localhost:3000",
+			"credentials": true
+		  }
+	},
+	"database": {
+		"type": "sqlite",
+		"database": "./db.sqlite3"
+	},
+	"Transform": "AWS::Serverless-2016-10-31"
 }

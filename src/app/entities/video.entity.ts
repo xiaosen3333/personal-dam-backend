@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { MediaType , Kind1, Kind2 } from "./index";
+import { MediaType , Kind1} from "./index";
 @Entity()
 export class Video extends BaseEntity {
 
@@ -22,5 +22,5 @@ export class Video extends BaseEntity {
   type: MediaType;
 
   @Column()
-  kind: Kind1 | Kind2;
+  kind: Kind1 ;
 }

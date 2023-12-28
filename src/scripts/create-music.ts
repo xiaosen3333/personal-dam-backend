@@ -1,7 +1,7 @@
 // 导入 Music 实体
 import { Music } from '../app/entities';
 import { dataSource } from '../db';
-import { MediaType, Kind1, Kind2 } from '../app/entities'; 
+import { MediaType, Kind1} from '../app/entities'; 
 
 // 定义输入 schema
 export const schema = {
@@ -26,7 +26,7 @@ export async function main(args: {
   cover: string,
   url: string,
   type: MediaType,
-  kind: Kind1 | Kind2,
+  kind: Kind1,
   text: string
 }) {
   await dataSource.initialize();
@@ -41,7 +41,7 @@ export async function main(args: {
   } else {
     throw new Error(`Invalid type: ${args.type}`);
   }
-  music.kind = args.kind in Kind1 ? Kind1[args.kind as unknown as keyof typeof Kind1] : Kind2[args.kind as unknown as keyof typeof Kind2];
+  music.kind = Kind1[args.kind as unknown as keyof typeof Kind1];
   music.text = args.text;
 
   try {

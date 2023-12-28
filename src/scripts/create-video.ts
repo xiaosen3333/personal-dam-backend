@@ -1,7 +1,7 @@
 // 导入 Video 实体
 import { Video } from '../app/entities';
 import { dataSource } from '../db';
-import { MediaType, Kind1, Kind2 } from '../app/entities'; 
+import { MediaType, Kind1} from '../app/entities'; 
 
 // 定义输入 schema
 export const schema = {
@@ -25,7 +25,7 @@ export async function main(args: {
   cover: string,
   url: string,
   type: MediaType,
-  kind: Kind1 | Kind2,
+  kind: Kind1,
 }) {
   await dataSource.initialize();
 
@@ -39,7 +39,7 @@ export async function main(args: {
   } else {
     throw new Error(`Invalid type: ${args.type}`);
   }
-  video.kind = args.kind in Kind1 ? Kind1[args.kind as unknown as keyof typeof Kind1] : Kind2[args.kind as unknown as keyof typeof Kind2];
+  video.kind = Kind1[args.kind as unknown as keyof typeof Kind1];
   try {
     console.log(await video.save());
   } catch (error: any) {

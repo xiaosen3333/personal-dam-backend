@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Migration1702015259043 implements MigrationInterface {
-    name = 'Migration1702015259043'
+export class Migration1703470424015 implements MigrationInterface {
+    name = 'Migration1703470424015'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
@@ -17,7 +17,7 @@ export class Migration1702015259043 implements MigrationInterface {
             )
         `);
         await queryRunner.query(`
-            CREATE TABLE "image" (
+            CREATE TABLE "video" (
                 "id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
                 "name" varchar NOT NULL,
                 "artist" varchar NOT NULL,
@@ -28,7 +28,7 @@ export class Migration1702015259043 implements MigrationInterface {
             )
         `);
         await queryRunner.query(`
-            CREATE TABLE "video" (
+            CREATE TABLE "image" (
                 "id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
                 "name" varchar NOT NULL,
                 "artist" varchar NOT NULL,
@@ -42,10 +42,10 @@ export class Migration1702015259043 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
-            DROP TABLE "video"
+            DROP TABLE "image"
         `);
         await queryRunner.query(`
-            DROP TABLE "image"
+            DROP TABLE "video"
         `);
         await queryRunner.query(`
             DROP TABLE "music"
